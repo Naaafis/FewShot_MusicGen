@@ -8,5 +8,7 @@ Project aims to explore the potential of using Generative Adversarial Networks (
 ## Current most relevant resources:
 
 [3] Kong, Z., Ping, W., Huang, J., Zhao, K., & Catanzaro, B. (2021, March 30). DiffWave: A versatile diffusion model for audio synthesis. arXiv.org. Retrieved April 18, 2023, from https://arxiv.org/abs/2009.09761
+
 [10] Goel, K., Gu, A., Donahue, C., & Ré, C. (2022, February 20). It's raw! audio generation with state-space models. arXiv.org. Retrieved April 20, 2023, from https://arxiv.org/abs/2202.09729
+
 [11] Zhao, Y., Ding, H., Huang, H., & Cheung, N.-M. (2023, April 15). A closer look at few-shot image generation. arXiv.org. Retrieved April 20, 2023, from https://arxiv.org/abs/2205.03805
