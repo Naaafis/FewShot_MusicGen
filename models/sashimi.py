@@ -3,6 +3,10 @@ import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+
+import sys
+sys.path.append('/projectnb/textconv/bkulis/DiffWave/einops')
+
 from einops import rearrange
 
 from models.utils import calc_diffusion_step_embedding

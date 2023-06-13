@@ -1,20 +1,49 @@
 """ Standalone version of Structured (Sequence) State Space (S4) model. """
 
 import logging
-from functools import partial
+import os
+import sys
+sys.path.append('/projectnb/textconv/bkulis/DiffWave/einops')
+from functools import partial, wraps
 import math
 import numpy as np
 from scipy import special as ss
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from pytorch_lightning.utilities import rank_zero_only
-from einops import rearrange, repeat
+#from pytorch_lightning.utilities import rank_zero_only
+from einops.einops import rearrange, repeat
 import opt_einsum as oe
+from typing import Any, Callable, Optional, Union
 
 contract = oe.contract
 contract_expression = oe.contract_expression
 
+def rank_zero_only(fn: Callable) -> Callable:
+    """Function that can be used as a decorator to enable a function/method being called only on global rank 0."""
+
+    @wraps(fn)
+    def wrapped_fn(*args: Any, **kwargs: Any) -> Optional[Any]:
+        if rank_zero_only.rank == 0:
+            return fn(*args, **kwargs)
+        return None
+
+    return wrapped_fn
+
+# TODO: this should be part of the cluster environment
+def _get_rank() -> int:
+    # SLURM_PROCID can be set even if SLURM is not managing the multiprocessing,
+    # therefore LOCAL_RANK needs to be checked first
+    rank_keys = ("RANK", "LOCAL_RANK", "SLURM_PROCID", "JSM_NAMESPACE_RANK")
+    for key in rank_keys:
+        rank = os.environ.get(key)
+        if rank is not None:
+            return int(rank)
+    return 0
+
+
+# add the attribute to the function but don't overwrite in case Trainer has already set it
+rank_zero_only.rank = getattr(rank_zero_only, "rank", _get_rank())
 
 def get_logger(name=__name__, level=logging.INFO) -> logging.Logger:
     """Initializes multi-GPU-friendly python logger."""
