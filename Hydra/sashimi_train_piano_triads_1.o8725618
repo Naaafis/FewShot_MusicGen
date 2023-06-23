@@ -1,0 +1,282 @@
+train:
+  name: null
+  ckpt_iter: max
+  iters_per_ckpt: 10000
+  iters_per_logging: 100
+  n_iters: 1000001
+  learning_rate: 0.0002
+  batch_size_per_gpu: 4
+generate:
+  ckpt_iter: max
+  ckpt_smooth: null
+  n_samples: 16
+  batch_size: null
+  mel_path: null
+  mel_name: null
+distributed:
+  dist_backend: nccl
+  dist_url: tcp://localhost:54321
+wandb:
+  mode: disabled
+  project: sashimi
+  entity: null
+  id: null
+  job_type: training
+model:
+  _name_: sashimi
+  unconditional: true
+  in_channels: 1
+  out_channels: 1
+  diffusion_step_embed_dim_in: 128
+  diffusion_step_embed_dim_mid: 512
+  diffusion_step_embed_dim_out: 512
+  unet: true
+  d_model: 64
+  n_layers: 6
+  pool:
+  - 4
+  - 4
+  expand: 2
+  ff: 2
+  L: ${dataset.segment_length}
+dataset:
+  _name_: piano_triads
+  data_path: data/pianoaudio_down
+  segment_length: 16000
+  sampling_rate: 16000
+  valid: false
+  filter_length: 1024
+  hop_length: 256
+  win_length: 1024
+  mel_fmin: 0.0
+  mel_fmax: 8000.0
+diffusion:
+  T: 200
+  beta_0: 0.0001
+  beta_T: 0.02
+  beta: null
+
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/checkpoint
+Data loaded
+Sashimi Parameters: 7.734267M
+No valid checkpoint model found - training from scratch.
+model at iteration 0 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 0
+Successfully loaded model at iteration 0
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/0
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 0 in 53 seconds
+saved generated samples at iteration 0
+model at iteration 10000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 10000
+Successfully loaded model at iteration 10000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/10000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 10000 in 53 seconds
+saved generated samples at iteration 10000
+model at iteration 20000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 20000
+Successfully loaded model at iteration 20000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/20000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 20000 in 53 seconds
+saved generated samples at iteration 20000
+model at iteration 30000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 30000
+Successfully loaded model at iteration 30000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/30000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 30000 in 53 seconds
+saved generated samples at iteration 30000
+model at iteration 40000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 40000
+Successfully loaded model at iteration 40000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/40000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 40000 in 53 seconds
+saved generated samples at iteration 40000
+model at iteration 50000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 50000
+Successfully loaded model at iteration 50000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/50000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 50000 in 53 seconds
+saved generated samples at iteration 50000
+model at iteration 60000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 60000
+Successfully loaded model at iteration 60000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/60000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 60000 in 53 seconds
+saved generated samples at iteration 60000
+model at iteration 70000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 70000
+Successfully loaded model at iteration 70000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/70000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 70000 in 53 seconds
+saved generated samples at iteration 70000
+model at iteration 80000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 80000
+Successfully loaded model at iteration 80000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/80000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 80000 in 54 seconds
+saved generated samples at iteration 80000
+model at iteration 90000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 90000
+Successfully loaded model at iteration 90000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/90000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 90000 in 54 seconds
+saved generated samples at iteration 90000
+model at iteration 100000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 100000
+Successfully loaded model at iteration 100000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/100000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 100000 in 54 seconds
+saved generated samples at iteration 100000
+model at iteration 110000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 110000
+Successfully loaded model at iteration 110000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/110000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 110000 in 53 seconds
+saved generated samples at iteration 110000
+model at iteration 120000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 120000
+Successfully loaded model at iteration 120000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/120000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 120000 in 53 seconds
+saved generated samples at iteration 120000
+model at iteration 130000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 130000
+Successfully loaded model at iteration 130000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/130000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 130000 in 53 seconds
+saved generated samples at iteration 130000
+model at iteration 140000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 140000
+Successfully loaded model at iteration 140000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/140000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 140000 in 54 seconds
+saved generated samples at iteration 140000
+model at iteration 150000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 150000
+Successfully loaded model at iteration 150000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/150000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 150000 in 53 seconds
+saved generated samples at iteration 150000
+model at iteration 160000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 160000
+Successfully loaded model at iteration 160000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/160000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 160000 in 53 seconds
+saved generated samples at iteration 160000
+model at iteration 170000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 170000
+Successfully loaded model at iteration 170000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/170000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 170000 in 53 seconds
+saved generated samples at iteration 170000
+model at iteration 180000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 180000
+Successfully loaded model at iteration 180000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/180000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 180000 in 53 seconds
+saved generated samples at iteration 180000
+model at iteration 190000 is saved
+rank 0 1 GPUs
+output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms
+Sashimi Parameters: 7.734267M
+ckpt_iter 190000
+Successfully loaded model at iteration 190000
+saving to output directory exp/unet_d64_n6_pool_2_expand2_ff2_T200_betaT0.02_uncond/waveforms/190000
+begin generating audio of length 16000 | 16 samples with batch size 16
+begin sampling, total number of reverse steps = 200
+generated 16 samples shape torch.Size([16, 1, 16000]) at iteration 190000 in 53 seconds
+saved generated samples at iteration 190000
