@@ -1,0 +1,3 @@
+- experiment=piano_triads
+- model=sashimi
+- wandb.mode=disabled
