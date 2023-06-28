@@ -1,0 +1,51 @@
+train:
+  name: null
+  ckpt_iter: max
+  iters_per_ckpt: 10000
+  iters_per_logging: 100
+  n_iters: 1000001
+  learning_rate: 0.0002
+  batch_size_per_gpu: 4
+generate:
+  ckpt_iter: max
+  ckpt_smooth: null
+  n_samples: 16
+  batch_size: null
+  mel_path: null
+  mel_name: null
+distributed:
+  dist_backend: nccl
+  dist_url: tcp://localhost:54321
+wandb:
+  mode: disabled
+  project: sashimi
+  entity: null
+  id: null
+  job_type: training
+model:
+  _name_: sashimi
+  unconditional: true
+  in_channels: 1
+  out_channels: 1
+  diffusion_step_embed_dim_in: 128
+  diffusion_step_embed_dim_mid: 512
+  diffusion_step_embed_dim_out: 512
+  unet: true
+  d_model: 64
+  n_layers: 6
+  pool:
+  - 4
+  - 4
+  expand: 2
+  ff: 2
+  L: ${dataset.segment_length}
+dataset:
+  _name_: sc09
+  data_path: /projectnb/textconv/bkulis/DiffWave/sashimi/diffwave-sashimi/data/sc09
+  segment_length: 16000
+  sampling_rate: 16000
+diffusion:
+  T: 200
+  beta_0: 0.0001
+  beta_T: 0.02
+  beta: null

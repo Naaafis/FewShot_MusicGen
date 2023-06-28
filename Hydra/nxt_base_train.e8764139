@@ -1,0 +1,41 @@
+/var/spool/sge/scc-q33/job_scripts/8764139: line 4: -m: command not found
+CUDA extension for cauchy multiplication not found. Install by going to extensions/cauchy/ and running `python setup.py install`. This should speed up end-to-end training by 10-50%
+Falling back on slow Cauchy kernel. Install at least one of pykeops or the CUDA extension for efficiency.
+Falling back on slow Cauchy kernel. Install at least one of pykeops or the CUDA extension for efficiency.
+Falling back on slow Vandermonde kernel. Install pykeops for improved memory efficiency.
+Epoch 4166:   0%|          | 0/108 [00:00<?, ?it/s]Epoch 4166:   0%|          | 0/108 [00:00<?, ?it/s]
+Error executing job with overrides: ['experiment=piano_triads', 'model=sashimi', 'model.d_model=64']
+Traceback (most recent call last):
+  File "train_nxt.py", line 306, in main
+    train_fn(0)
+  File "train_nxt.py", line 44, in distributed_train
+    train(
+  File "train_nxt.py", line 139, in train
+    loss = training_loss(net, nn.MSELoss(), audio, diffusion_hyperparams, mel_spec=mel_spectrogram)
+  File "train_nxt.py", line 278, in training_loss
+    positive_output = net((transformed_X, diffusion_steps.view(B,1),), mel_spec=mel_spec)  # the positive pair uses the same original audio but transformed differently
+  File "/share/pkg.7/pytorch/1.11.0/install/lib/SCC/../python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr4/dl523/nafis/FewShot_MusicGen/Hydra/models/sashimi.py", line 305, in forward
+    x = layer(x, diffusion_step_embed, mel_spec=mel_spec)
+  File "/share/pkg.7/pytorch/1.11.0/install/lib/SCC/../python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr4/dl523/nafis/FewShot_MusicGen/Hydra/models/sashimi.py", line 161, in forward
+    y, _ = self.layer(y)
+  File "/share/pkg.7/pytorch/1.11.0/install/lib/SCC/../python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr4/dl523/nafis/FewShot_MusicGen/Hydra/models/s4.py", line 1417, in forward
+    k, k_state = self.kernel(L=L_kernel, rate=rate, state=state) # (C H L) (B C H L)
+  File "/share/pkg.7/pytorch/1.11.0/install/lib/SCC/../python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr4/dl523/nafis/FewShot_MusicGen/Hydra/models/s4.py", line 1267, in forward
+    return self.kernel(state=state, L=L, rate=rate)
+  File "/share/pkg.7/pytorch/1.11.0/install/lib/SCC/../python3.8/site-packages/torch/nn/modules/module.py", line 1110, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/usr4/dl523/nafis/FewShot_MusicGen/Hydra/models/s4.py", line 791, in forward
+    r = cauchy_naive(v, z, w)
+  File "/usr4/dl523/nafis/FewShot_MusicGen/Hydra/models/s4.py", line 144, in cauchy_naive
+    cauchy_matrix = v.unsqueeze(-1) / (z.unsqueeze(-2) - w.unsqueeze(-1)) # (... N L)
+RuntimeError: CUDA out of memory. Tried to allocate 188.00 MiB (GPU 0; 15.77 GiB total capacity; 14.08 GiB already allocated; 35.38 MiB free; 14.33 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

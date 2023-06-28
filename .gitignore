@@ -160,4 +160,6 @@ cython_debug/
 #.idea/
 
 # Ignore data directory
-Hydra/data
+Hydra/data/Pianodata
+Hyrda/data/pianoaudio_down
+Hydra/exp

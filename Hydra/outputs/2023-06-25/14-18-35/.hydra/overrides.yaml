@@ -1,0 +1,4 @@
+- experiment=piano_triads
+- generate.n_samples=4
+- model=sashimi
+- model.d_model=64
