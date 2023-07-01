@@ -161,5 +161,5 @@ cython_debug/
 
 # Ignore data directory
 Hydra/data/Pianodata
-Hyrda/data/pianoaudio_down
+Hydra/data/pianoaudio_down
 Hydra/exp
