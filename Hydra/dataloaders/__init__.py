@@ -1,6 +1,6 @@
 import torch
 from torch.utils.data.distributed import DistributedSampler
-from .sc import SpeechCommands
+#from .sc import SpeechCommands
 from .mel2samp import Mel2Samp
 from .piano_downsamp import PianoSamples
 
@@ -8,10 +8,10 @@ def dataloader(dataset_cfg, batch_size, num_gpus, unconditional=True):
     # TODO would be nice if unconditional was decoupled from dataset
 
     dataset_name = dataset_cfg.pop("_name_")
-    if dataset_name == "sc09":
-        assert unconditional
-        dataset = SpeechCommands(dataset_cfg.data_path)
-    elif dataset_name == "ljspeech":
+    # if dataset_name == "sc09":
+    #     assert unconditional
+    #     dataset = SpeechCommands(dataset_cfg.data_path)
+    if dataset_name == "ljspeech":
         assert not unconditional
         dataset = Mel2Samp(**dataset_cfg)
     elif dataset_name == "piano_triads":

@@ -1,5 +1,5 @@
 _name_: piano_triads
-data_path: data/pianoaudio_down
+data_path: data/maestro_downsampled
 segment_length: 16000
 sampling_rate: 16000
 valid: false
