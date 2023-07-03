@@ -160,4 +160,5 @@ cython_debug/
 #.idea/
 
 # Ignore data directory
-Hydra/data
+Hydra/data/maestro_downsampled
+Hydra/data/maestro-v3.0.0
